@@ -132,3 +132,19 @@ Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool impri
 
   return NULL;
 }
+
+/**
+ * Overloads
+ */
+
+ostream &operator<<(ostream &stream, Concessionaria const concessionaria)
+{
+  stream
+      << "=== IMPRIMIR CONCESSIONÁRIA ===" << endl
+      << "Concessionária " << concessionaria.nome << endl
+      << "CNPJ: \t" << concessionaria.cnpj << endl
+      << "Estoque" << concessionaria.estoque.size() << " carros" << endl
+      << endl;
+
+  return stream;
+}
