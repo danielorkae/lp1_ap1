@@ -1,6 +1,7 @@
 #ifndef AUTOMOVEL_H
 #define AUTOMOVEL_H
 
+#include <iostream>
 #include <string>
 
 using namespace std;
@@ -44,6 +45,12 @@ public:
 
   Automovel();
   Automovel(string marca, string modelo, string chassi, float preco, string dataDeFrabricacao);
+
+  /**
+   * Overload
+   */
+
+  friend ostream &operator<<(ostream &stream, Automovel const automovel);
 };
 
 #endif

@@ -74,3 +74,20 @@ void Automovel::setPreco(float preco)
 {
   this->preco = preco;
 }
+
+/**
+ * Overloads
+ */
+
+ostream &operator<<(ostream &stream, Automovel const automovel)
+{
+  stream
+      << "=== IMPRIMIR AUTOMÓVEL ===" << endl
+      << automovel.marca << " " << automovel.modelo << endl
+      << "Preço: \tR$ " << automovel.preco << endl
+      << "Chassi: \t" << automovel.chassi << endl
+      << "Fabricação: \t" << automovel.dataDeFrabricacao << endl
+      << endl;
+
+  return stream;
+}
