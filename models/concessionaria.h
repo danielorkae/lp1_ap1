@@ -15,6 +15,12 @@ private:
   string cnpj;
   vector<Automovel *> estoque;
 
+  /**
+   * Methods
+   */
+
+  Automovel *encontrarAutomovelNoEstoque(string chassi, bool imprimir);
+
 public:
   /**
    * Constructors
@@ -45,6 +51,5 @@ public:
 
   void listarEstoque();
   void adicionarAutomovelAoEstoque();
-  void aumentarValorDoEstoque(int porcentagem);
-  Automovel *encontrarAutomovelNoEstoque(string chassi, bool imprimir);
+  void aumentarValorDoEstoque();
 };
