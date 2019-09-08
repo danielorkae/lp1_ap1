@@ -14,7 +14,7 @@ private:
 
   string modelo;
   string marca;
-  string numeroDoChassi;
+  string chassi;
   string dataDeFrabricacao;
   float preco;
 
@@ -24,7 +24,7 @@ public:
    */
   string getModelo();
   string getMarca();
-  string getNumeroDoChassi();
+  string getChassi();
   string getDataDeFrabricacao();
   float getPreco();
 
@@ -34,7 +34,7 @@ public:
 
   void setModelo(string modelo);
   void setMarca(string marca);
-  void setNumeroDoChassi(string numeroDoChassi);
+  void setChassi(string Chassi);
   void setDataDeFrabricacao(string dataDeFabricacao);
   void setPreco(float preco);
 
@@ -43,7 +43,7 @@ public:
    */
 
   Automovel();
-  Automovel(string modelo);
+  Automovel(string marca, string modelo, string chassi, float preco, string dataDeFrabricacao);
 };
 
 #endif

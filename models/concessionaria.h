@@ -11,7 +11,7 @@ private:
   string nome;
   string cnpj;
   int qntEstoque;
-  vector<Automovel> estoque;
+  vector<Automovel *> estoque;
 
 public:
   Concessionaria();
@@ -24,4 +24,7 @@ public:
 
   void setNome(string nome);
   void setCnpj(string cnpj);
+
+  void adicionarAutomovelAoEstoque();
+  Automovel *encontrarAutomovelNoEstoque(string chassi, bool imprimir);
 };

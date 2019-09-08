@@ -8,9 +8,13 @@ using namespace std;
 
 Automovel::Automovel() {}
 
-Automovel::Automovel(string modelo)
+Automovel::Automovel(string marca, string modelo, string chassi, float preco, string dataDeFabricacao)
 {
+  setMarca(marca);
   setModelo(modelo);
+  setChassi(chassi);
+  setPreco(preco);
+  setDataDeFrabricacao(dataDeFabricacao);
 }
 
 /**
@@ -27,9 +31,9 @@ string Automovel::getMarca()
   return this->marca;
 }
 
-string Automovel::getNumeroDoChassi()
+string Automovel::getChassi()
 {
-  return this->numeroDoChassi;
+  return this->chassi;
 }
 
 string Automovel::getDataDeFrabricacao()
@@ -56,9 +60,9 @@ void Automovel::setMarca(string marca)
   this->marca = marca;
 }
 
-void Automovel::setNumeroDoChassi(string numeroDoChassi)
+void Automovel::setChassi(string chassi)
 {
-  this->numeroDoChassi = numeroDoChassi;
+  this->chassi = chassi;
 }
 
 void Automovel::setDataDeFrabricacao(string dataDeFabricacao)
