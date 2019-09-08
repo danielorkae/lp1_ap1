@@ -1,3 +1,4 @@
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -10,6 +11,10 @@ private:
   int qntEstoque;
 
 public:
+  Concessionaria();
+  Concessionaria(string nome, string cnpj);
+  Concessionaria(string nome, string cnpj, int qntEstoque);
+
   string getNome();
   string getCnpj();
   int getQntEstoque();
@@ -17,8 +22,4 @@ public:
   void setNome(string nome);
   void setCnpj(string cnpj);
   void setQntEstoque(int qntEstoque);
-
-  Concessionaria();
-  Concessionaria(string nome, string cnpj);
-  Concessionaria(string nome, string cnpj, int qntEstoque);
 };
