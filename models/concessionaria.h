@@ -47,10 +47,4 @@ public:
   void adicionarAutomovelAoEstoque();
   void aumentarValorDoEstoque(int porcentagem);
   Automovel *encontrarAutomovelNoEstoque(string chassi, bool imprimir);
-
-  /**
-   * Overload
-   */
-
-  friend ostream &operator<<(ostream &stream, Concessionaria const concessionaria);
 };
