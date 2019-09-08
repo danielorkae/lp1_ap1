@@ -52,6 +52,17 @@ void Concessionaria::setCnpj(string cnpj)
  * Methods
  */
 
+void Concessionaria::listarEstoque()
+{
+  cout << "=== LISTAR ESTOQUE === " << endl
+       << endl;
+
+  for (unsigned int i = 0; i < estoque.size(); i++)
+  {
+    cout << estoque[i];
+  }
+}
+
 void Concessionaria::adicionarAutomovelAoEstoque()
 {
   string modelo, marca, chassi, dataDeFabricacao;
@@ -95,11 +106,7 @@ Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool impri
     {
       if (imprimir)
       {
-        cout
-            << automovel->getMarca() << " " << automovel->getModelo() << endl
-            << "Preço: \tR$ " << automovel->getPreco() << endl
-            << "Chassi: \t" << automovel->getChassi() << endl
-            << "Fabricação: \t" << automovel->getDataDeFrabricacao() << endl;
+        cout << automovel;
       }
 
       return automovel;

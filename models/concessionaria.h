@@ -25,6 +25,7 @@ public:
   void setNome(string nome);
   void setCnpj(string cnpj);
 
+  void listarEstoque();
   void adicionarAutomovelAoEstoque();
   Automovel *encontrarAutomovelNoEstoque(string chassi, bool imprimir);
 };
