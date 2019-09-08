@@ -10,14 +10,8 @@ Concessionaria::Concessionaria() {}
 
 Concessionaria::Concessionaria(string nome, string cnpj)
 {
-  Concessionaria(nome, cnpj, 0);
-}
-
-Concessionaria::Concessionaria(string nome, string cnpj, int qntEstoque)
-{
   setNome(nome);
   setCnpj(cnpj);
-  setQntEstoque(qntEstoque);
 }
 
 /**
@@ -36,7 +30,7 @@ string Concessionaria::getCnpj()
 
 int Concessionaria::getQntEstoque()
 {
-  return qntEstoque;
+  return estoque.size();
 }
 
 /**
@@ -51,9 +45,4 @@ void Concessionaria::setNome(string nome)
 void Concessionaria::setCnpj(string cnpj)
 {
   this->cnpj = cnpj;
-}
-
-void Concessionaria::setQntEstoque(int qntEstoque)
-{
-  this->qntEstoque = qntEstoque;
 }

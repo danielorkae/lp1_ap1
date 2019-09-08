@@ -1,5 +1,7 @@
 #include <vector>
 #include <string>
+#include <vector>
+#include "automovel.h"
 
 using namespace std;
 
@@ -9,17 +11,17 @@ private:
   string nome;
   string cnpj;
   int qntEstoque;
+  vector<Automovel> estoque;
 
 public:
   Concessionaria();
   Concessionaria(string nome, string cnpj);
-  Concessionaria(string nome, string cnpj, int qntEstoque);
 
   string getNome();
   string getCnpj();
   int getQntEstoque();
+  vector<Automovel *> getEstoque();
 
   void setNome(string nome);
   void setCnpj(string cnpj);
-  void setQntEstoque(int qntEstoque);
 };

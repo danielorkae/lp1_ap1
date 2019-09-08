@@ -19,7 +19,6 @@ int main()
 void criarConcessionaria()
 {
   string nome, cnpj;
-  int qntdEstoque;
 
   cout << "=== CADASTRO DE CONCESSIONáRIA ===" << endl;
 
@@ -35,10 +34,7 @@ void criarConcessionaria()
   cout << "Nome: " << endl;
   cin >> nome;
 
-  cout << "Qntd de estoque: " << endl;
-  cin >> qntdEstoque;
-
-  concessionarias.push_back(new Concessionaria(nome, cnpj, qntdEstoque));
+  concessionarias.push_back(new Concessionaria(nome, cnpj));
 }
 
 Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir)
