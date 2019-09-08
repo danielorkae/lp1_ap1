@@ -3,6 +3,17 @@
 using namespace std;
 
 /**
+ * Constructors
+ */
+
+Automovel::Automovel() {}
+
+Automovel::Automovel(string modelo)
+{
+  setModelo(modelo);
+}
+
+/**
  * Getters
  */
 
@@ -52,23 +63,10 @@ void Automovel::setNumeroDoChassi(string numeroDoChassi)
 
 void Automovel::setDataDeFrabricacao(string dataDeFabricacao)
 {
-  this->dataDeFrabricacao;
+  this->dataDeFrabricacao = dataDeFrabricacao;
 }
 
 void Automovel::setPreco(float preco)
 {
   this->preco = preco;
-}
-
-/**
- * Constructors
- */
-
-Automovel::Automovel()
-{
-}
-
-Automovel::Automovel(string modelo)
-{
-  setModelo(modelo);
 }
