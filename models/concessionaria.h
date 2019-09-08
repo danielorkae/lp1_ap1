@@ -27,5 +27,6 @@ public:
 
   void listarEstoque();
   void adicionarAutomovelAoEstoque();
+  void aumentarValorDoEstoque(int porcentagem);
   Automovel *encontrarAutomovelNoEstoque(string chassi, bool imprimir);
 };

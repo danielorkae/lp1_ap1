@@ -96,6 +96,18 @@ void Concessionaria::adicionarAutomovelAoEstoque()
   cout << "Automóvel cadastrado com sucesso!";
 }
 
+void Concessionaria::aumentarValorDoEstoque(int porcentagem)
+{
+  float aumento = 1 + porcentagem / 100;
+
+  for (unsigned int i = 0; i < estoque.size(); i++)
+  {
+    auto automovel = estoque[i];
+
+    automovel->setPreco(automovel->getPreco() * aumento);
+  }
+}
+
 Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool imprimir)
 {
   for (unsigned int i = 0; i < estoque.size(); i++)
