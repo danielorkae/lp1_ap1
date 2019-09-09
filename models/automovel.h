@@ -47,10 +47,10 @@ public:
   Automovel(string marca, string modelo, string chassi, float preco, string dataDeFrabricacao);
 
   /**
-   * Overload
+   * Operators
    */
 
-  friend ostream &operator<<(ostream &stream, Automovel const automovel);
+  friend ostream &operator<<(ostream &stream, const Automovel &automovel);
 };
 
 #endif

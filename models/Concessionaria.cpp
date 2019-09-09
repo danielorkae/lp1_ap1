@@ -60,7 +60,7 @@ void Concessionaria::listarEstoque()
 
   for (unsigned int i = 0; i < estoque.size(); i++)
   {
-    cout << estoque[i];
+    cout << *estoque[i];
   }
 
   if (estoque.size() == 0)
