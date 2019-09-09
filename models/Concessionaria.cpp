@@ -54,12 +54,18 @@ void Concessionaria::setCnpj(string cnpj)
 
 void Concessionaria::listarEstoque()
 {
-  cout << "=== LISTAR ESTOQUE === " << endl
+  cout << endl
+       << "=== LISTAR AUTOMÓVEIS NO ESTOQUE === " << endl
        << endl;
 
   for (unsigned int i = 0; i < estoque.size(); i++)
   {
     cout << estoque[i];
+  }
+
+  if (estoque.size() == 0)
+  {
+    cout << "Nenhum automóvel em estoque." << endl;
   }
 }
 
@@ -68,39 +74,43 @@ void Concessionaria::adicionarAutomovelAoEstoque()
   string modelo, marca, chassi, dataDeFabricacao;
   float preco;
 
-  cout << "=== CADASTRO DE AUTOMÓVEL ===" << endl;
+  cout << endl
+       << "=== CADASTRO DE AUTOMÓVEL ===" << endl;
 
-  cout << "Chassi: " << endl;
+  cout << "Chassi: ";
   cin >> chassi;
 
   if (encontrarAutomovelNoEstoque(chassi, false) != NULL)
   {
-    cout << "Automóvel já cadastrado com esse número de chassi." << endl;
+    cout << endl
+         << "Automóvel já cadastrado com esse número de chassi." << endl;
     return;
   }
 
-  cout << "Marca:" << endl;
+  cout << "Marca: ";
   cin >> marca;
 
-  cout << "Modelo:" << endl;
+  cout << "Modelo: ";
   cin >> modelo;
 
-  cout << "Preço:" << endl;
+  cout << "Preço: ";
   cin >> preco;
 
-  cout << "Data de fabricação (DD-MM-AAAA):" << endl;
+  cout << "Data de fabricação (DD-MM-AAAA):";
   cin >> dataDeFabricacao;
 
   estoque.push_back(new Automovel(marca, modelo, chassi, preco, dataDeFabricacao));
 
-  cout << "Automóvel cadastrado com sucesso!";
+  cout << endl
+       << "Automóvel cadastrado com sucesso!" << endl;
 }
 
 void Concessionaria::aumentarValorDoEstoque()
 {
   int porcentagem;
 
-  cout << "=== AUMENTAR VALOR DO ESTOQUE ===" << endl;
+  cout << endl
+       << "=== AUMENTAR VALOR DO ESTOQUE ===" << endl;
 
   cout << "Porcentagem de aumento: " << endl;
   cin >> porcentagem;
@@ -134,7 +144,8 @@ Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool impri
 
   if (imprimir)
   {
-    cout << "Nenhum automóvel encontrado." << endl;
+    cout << endl
+         << "Nenhum automóvel encontrado." << endl;
   }
 
   return NULL;
