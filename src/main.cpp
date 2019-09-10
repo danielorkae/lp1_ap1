@@ -16,6 +16,11 @@ Concessionaria *concessionariaSelecionada = NULL;
 
 int main()
 {
+
+    concessionarias.push_back(new Concessionaria("Autoshow", "1234567890"));
+    concessionarias.push_back(new Concessionaria("Carango", "1234567891"));
+    concessionarias.push_back(new Concessionaria("DaleCar", "1234567892"));
+
   bool sair = false;
   int selecaoMenuPrincipal, selecaoMenuConcessionaria;
 
