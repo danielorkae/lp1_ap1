@@ -1,4 +1,4 @@
-#include "automovel.h"
+#include "../include/automovel.h"
 
 using namespace std;
 
