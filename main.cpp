@@ -1,23 +1,25 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cstdlib>
+#include "models/menu.h"
 #include "models/concessionaria.h"
 
 using namespace std;
 
-vector<Concessionaria *> concessionarias;
-Concessionaria *concessionariaSelecionada = NULL;
-
-int menuPrincipal();
-int menuDaConcessionaria();
 void criarConcessionaria();
 Concessionaria *escolherConcessionaria();
 Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir);
+
+vector<Concessionaria *> concessionarias;
+Concessionaria *concessionariaSelecionada = NULL;
 
 int main()
 {
   bool sair = false;
   int selecaoMenuPrincipal, selecaoMenuConcessionaria;
+
+  system("clear");
 
   while (!sair)
   {
@@ -52,6 +54,9 @@ int main()
       case 3:
         concessionariaSelecionada->aumentarValorDoEstoque();
         break;
+      case 4:
+        concessionariaSelecionada->listarCarros90();
+        break;
       default:
         concessionariaSelecionada = NULL;
         break;
@@ -62,48 +67,8 @@ int main()
   return 1;
 }
 
-int menuPrincipal()
-{
-  int selecao;
 
-  cout
-      << endl
-      << "=== MENU PRINCIPAL ===" << endl
-      << "1 - Escolher concessionária" << endl
-      << "2 - Cadastrar concessionária" << endl
-      << "0 - Sair" << endl;
-
-  cin >> selecao;
-
-  if (selecao < 0 || selecao > 3)
-  {
-    return menuPrincipal();
-  }
-
-  return selecao;
-}
-
-int menuDaConcessionaria()
-{
-  int selecao;
-
-  cout
-      << endl
-      << "=== MENU DA CONCESSIONÁRIA ===" << endl
-      << "1 - Listar automóveis" << endl
-      << "2 - Cadastrar automóvel" << endl
-      << "3 - Aumentar preço de todos automóveis" << endl
-      << "0 - Voltar ao menu principal" << endl;
-
-  cin >> selecao;
-
-  if (selecao < 0 || selecao > 3)
-  {
-    return menuDaConcessionaria();
-  }
-
-  return selecao;
-}
+//-------------------------------------------------------------------------------------------------
 
 Concessionaria *escolherConcessionaria()
 {

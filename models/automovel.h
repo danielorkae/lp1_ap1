@@ -16,7 +16,9 @@ private:
   string modelo;
   string marca;
   string chassi;
-  string dataDeFrabricacao;
+  int dia;
+  int mes;
+  int ano;
   float preco;
 
 public:
@@ -26,7 +28,9 @@ public:
   string getModelo();
   string getMarca();
   string getChassi();
-  string getDataDeFrabricacao();
+  int getDiaDataDeFabricacao();
+  int getMesDataDeFabricacao();
+  int getAnoDataDeFabricacao();
   float getPreco();
 
   /**
@@ -36,15 +40,19 @@ public:
   void setModelo(string modelo);
   void setMarca(string marca);
   void setChassi(string Chassi);
-  void setDataDeFrabricacao(string dataDeFabricacao);
+  void setDiaDataDeFabricacao(int dia);
+  void setMesDataDeFabricacao(int mes);
+  void setAnoDataDeFabricacao(int ano);
   void setPreco(float preco);
+  void addPercentage(float valeu);
 
   /**
-   * Constructors
+   * Constructors and Destructors
    */
 
   Automovel();
-  Automovel(string marca, string modelo, string chassi, float preco, string dataDeFrabricacao);
+  Automovel(string marca, string modelo, string chassi, float preco, int _dia, int _mes, int _ano);
+  ~Automovel();
 
   /**
    * Operators

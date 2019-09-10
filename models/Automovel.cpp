@@ -3,18 +3,22 @@
 using namespace std;
 
 /**
- * Constructors
+ * Constructors and Destructors
  */
 
 Automovel::Automovel() {}
 
-Automovel::Automovel(string marca, string modelo, string chassi, float preco, string dataDeFabricacao)
+Automovel::~Automovel() {}
+
+Automovel::Automovel(string marca, string modelo, string chassi, float preco, int _dia, int _mes, int _ano)
 {
   setMarca(marca);
   setModelo(modelo);
   setChassi(chassi);
   setPreco(preco);
-  setDataDeFrabricacao(dataDeFabricacao);
+  setDiaDataDeFabricacao(_dia);
+  setMesDataDeFabricacao(_mes);
+  setAnoDataDeFabricacao(_ano);
 }
 
 /**
@@ -36,9 +40,19 @@ string Automovel::getChassi()
   return this->chassi;
 }
 
-string Automovel::getDataDeFrabricacao()
+int Automovel::getDiaDataDeFabricacao()
 {
-  return this->dataDeFrabricacao;
+  return this->dia;
+}
+
+int Automovel::getMesDataDeFabricacao()
+{
+  return this->mes;
+}
+
+int Automovel::getAnoDataDeFabricacao()
+{
+  return this->ano;
 }
 
 float Automovel::getPreco()
@@ -65,14 +79,29 @@ void Automovel::setChassi(string chassi)
   this->chassi = chassi;
 }
 
-void Automovel::setDataDeFrabricacao(string dataDeFabricacao)
+void Automovel::setDiaDataDeFabricacao(int day)
 {
-  this->dataDeFrabricacao = dataDeFrabricacao;
+  this->dia = day;
+}
+
+void Automovel::setMesDataDeFabricacao(int month)
+{
+  this->mes = month;
+}
+
+void Automovel::setAnoDataDeFabricacao(int year)
+{
+  this->ano = year;
 }
 
 void Automovel::setPreco(float preco)
 {
   this->preco = preco;
+}
+
+void Automovel::addPercentage(float value)
+{
+  this->preco += (this->preco * value) / 100;
 }
 
 /**
@@ -86,7 +115,7 @@ ostream &operator<<(ostream &stream, const Automovel &automovel)
       << automovel.marca << " " << automovel.modelo << endl
       << "Preço: \t\tR$ " << automovel.preco << endl
       << "Chassi: \t" << automovel.chassi << endl
-      << "Fabricação: \t" << automovel.dataDeFrabricacao << endl
+      << "Fabricação: \t" << automovel.dia << "/" << automovel.mes << "/" << automovel.ano << endl
       << endl;
 
   return stream;

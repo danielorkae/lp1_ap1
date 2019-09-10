@@ -4,10 +4,12 @@
 #include "automovel.h"
 
 /**
- * Constructors
+ * Constructors and Destructors
  */
 
 Concessionaria::Concessionaria() {}
+
+Concessionaria::~Concessionaria() {}
 
 Concessionaria::Concessionaria(string nome, string cnpj)
 {
@@ -71,8 +73,9 @@ void Concessionaria::listarEstoque()
 
 void Concessionaria::adicionarAutomovelAoEstoque()
 {
-  string modelo, marca, chassi, dataDeFabricacao;
+  string modelo, marca, chassi;
   float preco;
+  int dia, mes, ano;
 
   cout << endl
        << "=== CADASTRO DE AUTOMÓVEL ===" << endl;
@@ -96,10 +99,19 @@ void Concessionaria::adicionarAutomovelAoEstoque()
   cout << "Preço: ";
   cin >> preco;
 
-  cout << "Data de fabricação (DD-MM-AAAA):";
-  cin >> dataDeFabricacao;
+  cout << "Data de fabricação (Informe um dado de cada vez, apenas numeros):" << endl;
+  
+  cout << "Dia: ";
+  cin >> dia;
+  
+  cout << "Mes: ";
+  cin >> mes;
+  
+  cout << "Ano: ";
+  cin >> ano;
 
-  estoque.push_back(new Automovel(marca, modelo, chassi, preco, dataDeFabricacao));
+
+  estoque.push_back(new Automovel(marca, modelo, chassi, preco, dia, mes, ano));
 
   cout << endl
        << "Automóvel cadastrado com sucesso!" << endl;
@@ -107,22 +119,59 @@ void Concessionaria::adicionarAutomovelAoEstoque()
 
 void Concessionaria::aumentarValorDoEstoque()
 {
-  int porcentagem;
+  float porcentagem;
 
   cout << endl
        << "=== AUMENTAR VALOR DO ESTOQUE ===" << endl;
 
-  cout << "Porcentagem de aumento: " << endl;
+  cout << "Porcentagem de aumento (Apenas numeros entre 0 e 100): " << endl;
   cin >> porcentagem;
-
-  float aumento = 1 + porcentagem / 100;
 
   for (unsigned int i = 0; i < estoque.size(); i++)
   {
     auto automovel = estoque[i];
 
-    automovel->setPreco(automovel->getPreco() * aumento);
+    automovel->addPercentage(porcentagem);
   }
+}
+
+void Concessionaria::listarCarros90(){
+    
+  int dia_data_atual;
+  int mes_data_atual;
+  int ano_data_atual;
+
+  cout << endl
+       << "=== INFORMAR CARROS COM 90 DIAS DE USO ===" << endl;
+
+  cout << "Data atual (Informe um dado de cada vez, apenas numeros):" << endl;
+  
+  cout << "Dia: ";
+  cin >> dia_data_atual;
+  
+  cout << "Mes: ";
+  cin >> mes_data_atual;
+  
+  cout << "Ano: ";
+  cin >> ano_data_atual;
+
+  cout << endl << "CARROS COM MENOS DE 90 DIAS DE USO:" << endl << endl;
+
+  for (unsigned int i = 0; i < estoque.size(); i++)
+  {
+    auto automovel = estoque[i];
+   
+    int dia_fab = automovel->getDiaDataDeFabricacao();
+    int mes_fab = automovel->getMesDataDeFabricacao(); 
+    int ano_fab = automovel->getAnoDataDeFabricacao();
+
+    int resultado = calculaData(dia_data_atual, mes_data_atual, ano_data_atual) - calculaData(dia_fab, mes_fab, ano_fab) ;
+    
+    if(resultado <= 90){
+      cout << *estoque[i];
+    }
+      
+  }  
 }
 
 Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool imprimir)
@@ -149,4 +198,13 @@ Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool impri
   }
 
   return NULL;
+}
+
+int Concessionaria::calculaData(int day, int month, int year){
+    
+    if (month < 3)
+      year--, month += 12;
+    
+    return 365*year + year/4 - year/100 + year/400 + (153*month - 457)/5 + day - 306;
+
 }

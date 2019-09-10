@@ -20,13 +20,15 @@ private:
    */
 
   Automovel *encontrarAutomovelNoEstoque(string chassi, bool imprimir);
+  int calculaData(int day, int month, int year);
 
 public:
   /**
-   * Constructors
+   * Constructors and Destructors
    */
 
   Concessionaria();
+  ~Concessionaria();
   Concessionaria(string nome, string cnpj);
 
   /**
@@ -52,4 +54,8 @@ public:
   void listarEstoque();
   void adicionarAutomovelAoEstoque();
   void aumentarValorDoEstoque();
+  void listarCarros90();
 };
+
+//-----------------------------------------------------------------------------------------------
+
