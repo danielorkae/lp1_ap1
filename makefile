@@ -1,21 +1,14 @@
-CC=g++
+output: main.o concessionaria.o automovel.o
+	g++ main.o concessionaria.o automovel.o -o index.out
 
-LIB=./lib
-INCLUDE=./include
-SRC=./src
-BUILD=./build
-BIN=./bin
+main.o: src/main.cpp
+	g++ src/main.cpp -Wall -ansi -pedantic -std=c++11
 
-FLAGS = -Wall -pedantic -std=c++11
+concessionaria.o: concessionaria.cpp concessionaria.h
+	g++ src/concessionaria.cpp
 
-main: projeto.a
-	$(CC) $(SRC)/main.cpp $(FLAGS) -I$(INCLUDE) -L$(LIB) -o $(BIN)/$@
-
-projeto.a:
-	$(CC) -c $(SRC)/Automovel.cpp $(FLAGS) -I$(INCLUDE) -o $(BUILD)/automovel.o 
-	$(CC) -c $(SRC)/Concessionaria.cpp $(FLAGS) -I$(INCLUDE) -o $(BUILD)/concessionaria.o
-	$(CC) -c $(SRC)/menu.cpp $(FLAGS) -I$(INCLUDE) -o $(BUILD)/menu.o
-	ar -cru $(LIB)/projeto.a $(BUILD)/automovel.o $(BUILD)/concessionaria.o $(BUILD)/menu.o 
+automovel.o: automovel.cpp automovel.h
+	g++ src/automovel.cpp
 
 clean:
-	rm $(BIN)/main $(SRC)/*~ $(BUILD)/*o $(LIB)/*a
+	rm *.o output
