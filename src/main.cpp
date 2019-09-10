@@ -67,7 +67,6 @@ int main()
   return 1;
 }
 
-
 //-------------------------------------------------------------------------------------------------
 
 Concessionaria *escolherConcessionaria()
@@ -137,7 +136,7 @@ Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir)
 {
   for (unsigned int i = 0; i < concessionarias.size(); i++)
   {
-    auto concessionaria = concessionarias[i];
+    Concessionaria *concessionaria = concessionarias[i];
 
     if (concessionaria->getCnpj() == cnpj)
     {

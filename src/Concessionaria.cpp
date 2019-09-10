@@ -100,16 +100,15 @@ void Concessionaria::adicionarAutomovelAoEstoque()
   cin >> preco;
 
   cout << "Data de fabricação (Informe um dado de cada vez, apenas numeros):" << endl;
-  
+
   cout << "Dia: ";
   cin >> dia;
-  
+
   cout << "Mes: ";
   cin >> mes;
-  
+
   cout << "Ano: ";
   cin >> ano;
-
 
   estoque.push_back(new Automovel(marca, modelo, chassi, preco, dia, mes, ano));
 
@@ -129,14 +128,15 @@ void Concessionaria::aumentarValorDoEstoque()
 
   for (unsigned int i = 0; i < estoque.size(); i++)
   {
-    auto automovel = estoque[i];
+    Automovel *automovel = estoque[i];
 
     automovel->addPercentage(porcentagem);
   }
 }
 
-void Concessionaria::listarCarros90(){
-    
+void Concessionaria::listarCarros90()
+{
+
   int dia_data_atual;
   int mes_data_atual;
   int ano_data_atual;
@@ -145,40 +145,42 @@ void Concessionaria::listarCarros90(){
        << "=== INFORMAR CARROS COM 90 DIAS DE USO ===" << endl;
 
   cout << "Data atual (Informe um dado de cada vez, apenas numeros):" << endl;
-  
+
   cout << "Dia: ";
   cin >> dia_data_atual;
-  
+
   cout << "Mes: ";
   cin >> mes_data_atual;
-  
+
   cout << "Ano: ";
   cin >> ano_data_atual;
 
-  cout << endl << "CARROS COM MENOS DE 90 DIAS DE USO:" << endl << endl;
+  cout << endl
+       << "CARROS COM MENOS DE 90 DIAS DE USO:" << endl
+       << endl;
 
   for (unsigned int i = 0; i < estoque.size(); i++)
   {
-    auto automovel = estoque[i];
-   
+    Automovel *automovel = estoque[i];
+
     int dia_fab = automovel->getDiaDataDeFabricacao();
-    int mes_fab = automovel->getMesDataDeFabricacao(); 
+    int mes_fab = automovel->getMesDataDeFabricacao();
     int ano_fab = automovel->getAnoDataDeFabricacao();
 
-    int resultado = calculaData(dia_data_atual, mes_data_atual, ano_data_atual) - calculaData(dia_fab, mes_fab, ano_fab) ;
-    
-    if(resultado <= 90){
+    int resultado = calculaData(dia_data_atual, mes_data_atual, ano_data_atual) - calculaData(dia_fab, mes_fab, ano_fab);
+
+    if (resultado <= 90)
+    {
       cout << *estoque[i];
     }
-      
-  }  
+  }
 }
 
 Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool imprimir)
 {
   for (unsigned int i = 0; i < estoque.size(); i++)
   {
-    auto automovel = estoque[i];
+    Automovel *automovel = estoque[i];
 
     if (automovel->getChassi() == chassi)
     {
@@ -200,11 +202,11 @@ Automovel *Concessionaria::encontrarAutomovelNoEstoque(string chassi, bool impri
   return NULL;
 }
 
-int Concessionaria::calculaData(int day, int month, int year){
-    
-    if (month < 3)
-      year--, month += 12;
-    
-    return 365*year + year/4 - year/100 + year/400 + (153*month - 457)/5 + day - 306;
+int Concessionaria::calculaData(int day, int month, int year)
+{
 
+  if (month < 3)
+    year--, month += 12;
+
+  return 365 * year + year / 4 - year / 100 + year / 400 + (153 * month - 457) / 5 + day - 306;
 }
