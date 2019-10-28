@@ -1,11 +1,22 @@
+//Bibliotecas padrão
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <cstdlib>
+
+//Arquivos modularizados
+
 #include "../include/concessionaria.h"
+#include "../include/veiculo.h"
+#include "../include/automovel.h"
+#include "../include/moto.h"
+#include "../include/caminhao.h"
 #include "../include/menu.h"
 
 using namespace std;
+
+//
 
 void criarConcessionaria();
 Concessionaria *escolherConcessionaria();
@@ -16,10 +27,6 @@ Concessionaria *concessionariaSelecionada = NULL;
 
 int main()
 {
-
-    concessionarias.push_back(new Concessionaria("Autoshow", "1234567890"));
-    concessionarias.push_back(new Concessionaria("Carango", "1234567891"));
-    concessionarias.push_back(new Concessionaria("DaleCar", "1234567892"));
 
   bool sair = false;
   int selecaoMenuPrincipal, selecaoMenuConcessionaria;
@@ -54,7 +61,7 @@ int main()
         concessionariaSelecionada->listarEstoque();
         break;
       case 2:
-        concessionariaSelecionada->adicionarAutomovelAoEstoque();
+        concessionariaSelecionada->adicionarVeiculoAoEstoque();
         break;
       case 3:
         concessionariaSelecionada->aumentarValorDoEstoque();
@@ -73,6 +80,62 @@ int main()
 }
 
 //-------------------------------------------------------------------------------------------------
+
+void criarConcessionaria()
+{
+  string nome, cnpj, tipo_propriedade, nome_propriedade;
+  int escolha;
+
+  cout << endl
+       << "=== CADASTRO DE CONCESSIONÁRIA ===" << endl;
+
+  cout << "CNPJ: ";
+  cin >> cnpj;
+
+  if (encontrarConcessionaria(cnpj, false) != NULL)
+  {
+    cout << "Esta concessionária já está cadastrada." << endl;
+  }
+  else
+  {
+    cout << "Nome: ";
+    cin >> nome;
+
+    cout << "Tipo de propriedade: "
+         << endl
+         << "[1] Pessoa Física"
+         << endl
+         << "[2] Pessoa Jurídica"
+         << endl
+         << "Escolha uma entrada: ";
+    cin >> escolha;
+
+    if (escolha == 1) 
+    {
+      tipo_propriedade = "Pessoa Física";
+
+      cout << "Informe o nome da Pessoa Física: ";
+      cin >> nome_propriedade;
+    }
+    else if (escolha == 2) 
+    {
+      tipo_propriedade = "Pessoa Jurídica: ";
+
+      cout << "Informe o número da Pessoa Jurídica";
+      cin >> nome_propriedade;
+    }
+    else 
+    {
+      cout << "Valor informado inválido!";
+    }
+
+
+    concessionarias.push_back(new Concessionaria(nome, cnpj, tipo_propriedade, nome_propriedade));
+
+    cout << endl
+         << "Concessionária cadastrada com sucesso!" << endl;
+  }
+}
 
 Concessionaria *escolherConcessionaria()
 {
@@ -109,32 +172,6 @@ Concessionaria *escolherConcessionaria()
   }
 
   return concessionarias[selecao - 1];
-}
-
-void criarConcessionaria()
-{
-  string nome, cnpj;
-
-  cout << endl
-       << "=== CADASTRO DE CONCESSIONÁRIA ===" << endl;
-
-  cout << "CNPJ: ";
-  cin >> cnpj;
-
-  if (encontrarConcessionaria(cnpj, false) != NULL)
-  {
-    cout << "Esta concessionária já está cadastrada." << endl;
-  }
-  else
-  {
-    cout << "Nome: ";
-    cin >> nome;
-
-    concessionarias.push_back(new Concessionaria(nome, cnpj));
-
-    cout << endl
-         << "Concessionária cadastrada com sucesso!" << endl;
-  }
 }
 
 Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir)

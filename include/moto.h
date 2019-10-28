@@ -1,5 +1,5 @@
-#ifndef AUTOMOVEL_H
-#define AUTOMOVEL_H
+#ifndef MOTO_H
+#define MOTO_H
 
 #include <iostream>
 #include <string>
@@ -9,10 +9,10 @@
 using namespace std;
 
 /**
- * Classe de Veículos do tipo Automovel
+ * Classe de Veículos do tipo Moto
  */
 
-class Automovel : public Veiculo
+class Moto : public Veiculo
 {
 private:
 
@@ -21,7 +21,7 @@ private:
    * Atributos especificos desta classe
    */
 
-  string motor;
+  string modelo;
 
 public:
 
@@ -30,23 +30,23 @@ public:
    * Funções para acessar os valores dos atributos da classe
    */
 
-  string getMotor();
+  string getModelo();
 
   /**
    * Setters
    * Funções para determinar os valores dos atributos da classe
    */
 
-  void setMotor(string _motor);
+  void setModelo(string _modelo);
 
   /**
    * Constructors and Destructors
    * Contrutor padrão, por parâmetro e destrutor da classe
    */
 
-  Automovel();
-  Automovel(string marca, string chassi, float preco, int _dia, int _mes, int _ano, string motor);
-  ~Automovel();
+  Moto();
+  Moto(string marca, string chassi, float preco, int _dia, int _mes, int _ano, string modelo);
+  ~Moto();
 
 };
 

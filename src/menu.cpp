@@ -33,10 +33,10 @@ int menuDaConcessionaria()
   cout
       << endl
       << "=== MENU DA CONCESSIONÁRIA ===" << endl
-      << "1 - Listar automóveis" << endl
-      << "2 - Cadastrar automóvel" << endl
-      << "3 - Aumentar preço de todos automóveis" << endl
-      << "4 - Listar carros com menos de 90 dias de uso" << endl
+      << "1 - Listar veículos" << endl
+      << "2 - Cadastrar veículo" << endl
+      << "3 - Aumentar preço de todos veículos" << endl
+      << "4 - Listar veículos com menos de 90 dias de uso" << endl
       << "0 - Voltar ao menu principal" << endl;
 
   cout << "#: ";
