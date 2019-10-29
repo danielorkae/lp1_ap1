@@ -31,8 +31,6 @@ private:
   vector<Moto *> estoque_moto;
   vector<Caminhao *> estoque_caminhao;
 
-  vector<string *> chassis; 
-
 public:
 
   /**
@@ -75,6 +73,9 @@ public:
   void listarCarros90();
   Veiculo *encontrarVeiculoNoEstoque(string chassi, bool imprimir);
   int calculaData(int day, int month, int year);
+
+  void pesquisaChassi();
+  int valorTotal();
 
 };
 

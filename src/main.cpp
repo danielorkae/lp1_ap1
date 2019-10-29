@@ -1,6 +1,7 @@
 //Bibliotecas padrão
 
 #include <iostream>
+#include <istream>
 #include <string>
 #include <vector>
 #include <cstdlib>
@@ -16,14 +17,17 @@
 
 using namespace std;
 
-//
+//Funções para manipular os objetos Concessionaria
 
-void criarConcessionaria();
-Concessionaria *escolherConcessionaria();
-Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir);
+void criarConcessionaria(); //Cria uma concessionaria com todos os seus atributos
+void listarConcessionarias(); //Lista todas as concessionarias existentes, e caso nao haja nenhuma, ele irá informar
+Concessionaria *escolherConcessionaria(); //Função para escolher uma concessionaria e fazer alterações em seus atributos, como os veículos
+Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir); //Função para encontrar uma concessionaria ja existente
 
-vector<Concessionaria *> concessionarias;
-Concessionaria *concessionariaSelecionada = NULL;
+vector<Concessionaria *> concessionarias; //Vetor de concessionarias
+Concessionaria *concessionariaSelecionada = NULL; //Objeto concessionaria utilizado no menu de interação com usuário
+
+//-------------------------------------------------------------------------------------------------
 
 int main()
 {
@@ -47,6 +51,9 @@ int main()
       case 2:
         criarConcessionaria();
         break;
+      case 3:
+        listarConcessionarias();
+        break;
       default:
         return 0;
       }
@@ -69,6 +76,9 @@ int main()
       case 4:
         concessionariaSelecionada->listarCarros90();
         break;
+      case 5:
+        concessionariaSelecionada->pesquisaChassi();
+        break;
       default:
         concessionariaSelecionada = NULL;
         break;
@@ -83,11 +93,14 @@ int main()
 
 void criarConcessionaria()
 {
-  string nome, cnpj, tipo_propriedade, nome_propriedade;
-  int escolha;
+  string nome, cnpj, tipo_propriedade, nome_propriedade, entrada;
+  int escolha = 0;
 
   cout << endl
        << "=== CADASTRO DE CONCESSIONÁRIA ===" << endl;
+
+  cout << "Nome: ";
+  cin >> nome;
 
   cout << "CNPJ: ";
   cin >> cnpj;
@@ -98,8 +111,7 @@ void criarConcessionaria()
   }
   else
   {
-    cout << "Nome: ";
-    cin >> nome;
+    cin.clear();
 
     cout << "Tipo de propriedade: "
          << endl
@@ -121,7 +133,7 @@ void criarConcessionaria()
     {
       tipo_propriedade = "Pessoa Jurídica: ";
 
-      cout << "Informe o número da Pessoa Jurídica";
+      cout << "Informe o número da Pessoa Jurídica: ";
       cin >> nome_propriedade;
     }
     else 
@@ -136,6 +148,41 @@ void criarConcessionaria()
          << "Concessionária cadastrada com sucesso!" << endl;
   }
 }
+
+//-------------------------------------------------------------------------------------------------
+
+void listarConcessionarias()
+{
+  cout << endl
+        << "=== LISTAR CONCESSIONÁRIAS ===" << endl;
+
+  if (concessionarias.size() == 0)
+  {
+    cout << endl << "Nenhuma concessionária cadastrada."
+         << endl;
+    return;
+  }
+
+  for (unsigned int i = 0; i < concessionarias.size(); i++)
+  {
+
+    cout << endl << "######################################################" << endl << endl;
+
+    Concessionaria *concessionaria = concessionarias[i];
+
+    cout << "Nome: " << concessionaria->getNome() << endl
+          << "Proprietário do tipo " << concessionaria->getTipo_propriedade()
+          << concessionaria->getNome_propriedade() << endl;
+
+    concessionaria->listarEstoque();
+
+    cout << endl << "Valor total dos veículos: R$" << concessionaria->valorTotal() << endl;
+  } 
+
+  cout << endl << "######################################################" << endl << endl;
+}
+
+//-------------------------------------------------------------------------------------------------
 
 Concessionaria *escolherConcessionaria()
 {
@@ -173,6 +220,8 @@ Concessionaria *escolherConcessionaria()
 
   return concessionarias[selecao - 1];
 }
+
+//-------------------------------------------------------------------------------------------------
 
 Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir)
 {

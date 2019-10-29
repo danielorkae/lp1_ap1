@@ -13,6 +13,7 @@ int menuPrincipal()
       << "=== MENU PRINCIPAL ===" << endl
       << "1 - Escolher concessionária" << endl
       << "2 - Cadastrar concessionária" << endl
+      << "3 - Listar concessionárias" << endl
       << "0 - Sair" << endl;
 
   cout << "#: ";
@@ -37,12 +38,13 @@ int menuDaConcessionaria()
       << "2 - Cadastrar veículo" << endl
       << "3 - Aumentar preço de todos veículos" << endl
       << "4 - Listar veículos com menos de 90 dias de uso" << endl
+      << "5 - Pesquisar veículo por chassi" << endl
       << "0 - Voltar ao menu principal" << endl;
 
   cout << "#: ";
   cin >> selecao;
 
-  if (selecao < 0 || selecao > 4)
+  if (selecao < 0 || selecao > 5)
   {
     return menuDaConcessionaria();
   }

@@ -113,7 +113,7 @@ void Concessionaria::listarEstoque()
 void Concessionaria::adicionarVeiculoAoEstoque()
 {
 
-  int entrada_tipo, entrada;
+  int entrada_tipo = 0, entrada = 0;
 
   string marca, chassi, motor, modelo, carga;
   float preco;
@@ -140,7 +140,7 @@ void Concessionaria::adicionarVeiculoAoEstoque()
     return;
   }
 
-  cout << "Chassi: ";
+  cout << "Chassi (Apenas números): ";
   cin >> chassi;
 
   if (encontrarVeiculoNoEstoque(chassi, false) != NULL)
@@ -175,7 +175,7 @@ void Concessionaria::adicionarVeiculoAoEstoque()
          << endl
          << "[2] Elétrico"
          << endl
-         << "Informe um valor: ";
+         << "Informe um numero: ";
     cin >> entrada;
 
     if (entrada == 1)
@@ -202,7 +202,7 @@ void Concessionaria::adicionarVeiculoAoEstoque()
          << endl
          << "[2] Esportivo"
          << endl
-         << "Informe um valor: ";
+         << "Informe um numero: ";
     cin >> entrada;
 
     if (entrada == 1)
@@ -229,7 +229,7 @@ void Concessionaria::adicionarVeiculoAoEstoque()
          << endl
          << "[2] Perigosa"
          << endl
-         << "Informe um valor: ";
+         << "Informe um numero: ";
     cin >> entrada;
 
     if (entrada == 1)
@@ -369,7 +369,14 @@ Veiculo *Concessionaria::encontrarVeiculoNoEstoque(string chassi, bool imprimir)
     {
       if (imprimir)
       {
-        cout << automovel;
+        cout << "=== IMPRIMIR VEÍCULO ===" << endl
+        << "Automovel" << endl
+        << "Marca: \t" << automovel->getMarca() << endl
+        << "Preço: \t\tR$ " << automovel->getPreco() << endl
+        << "Chassi: \t" << automovel->getChassi() << endl
+        << "Fabricação: \t" << automovel->getDiaDataDeFabricacao() << "/" << automovel->getMesDataDeFabricacao() << "/" << automovel->getAnoDataDeFabricacao() << endl
+        << "Tipo de motor: \t" << automovel->getMotor() << endl
+        << endl;
       }
 
       return automovel;
@@ -384,7 +391,14 @@ Veiculo *Concessionaria::encontrarVeiculoNoEstoque(string chassi, bool imprimir)
     {
       if (imprimir)
       {
-        cout << moto;
+        cout << "=== IMPRIMIR VEÍCULO ===" << endl
+        << "Moto" << endl
+        << "Marca: \t" << moto->getMarca() << endl
+        << "Preço: \t\tR$ " << moto->getPreco() << endl
+        << "Chassi: \t" << moto->getChassi() << endl
+        << "Fabricação: \t" << moto->getDiaDataDeFabricacao() << "/" << moto->getMesDataDeFabricacao() << "/" << moto->getAnoDataDeFabricacao() << endl
+        << "Tipo de modelo: \t" << moto->getModelo() << endl
+        << endl;
       }
 
       return moto;
@@ -399,7 +413,14 @@ Veiculo *Concessionaria::encontrarVeiculoNoEstoque(string chassi, bool imprimir)
     {
       if (imprimir)
       {
-        cout << caminhao;
+        cout << "=== IMPRIMIR VEÍCULO ===" << endl
+        << "Caminhão" << endl
+        << "Marca: \t" << caminhao->getMarca() << endl
+        << "Preço: \t\tR$ " << caminhao->getPreco() << endl
+        << "Chassi: \t" << caminhao->getChassi() << endl
+        << "Fabricação: \t" << caminhao->getDiaDataDeFabricacao() << "/" << caminhao->getMesDataDeFabricacao() << "/" << caminhao->getAnoDataDeFabricacao() << endl
+        << "Tipo de carga: \t" << caminhao->getCarga() << endl
+        << endl;
       }
 
       return caminhao;
@@ -422,4 +443,39 @@ int Concessionaria::calculaData(int day, int month, int year)
     year--, month += 12;
 
   return 365 * year + year / 4 - year / 100 + year / 400 + (153 * month - 457) / 5 + day - 306;
+}
+
+void Concessionaria::pesquisaChassi()
+{
+  string _chassi;
+
+  cout << endl
+       << "=== PESQUISAR VEÍCULOS POR CHASSI ===" << endl;
+
+  cout << "Informe o número de chassi a ser pesquisado (Apenas números): ";
+  cin >> _chassi;
+
+  encontrarVeiculoNoEstoque(_chassi, true);
+}
+
+int Concessionaria::valorTotal()
+{
+  int total = 0;
+  
+  for (unsigned int i = 0; i < estoque_automovel.size(); i++)
+  {
+    total += estoque_automovel[i]->getPreco();
+  }
+
+  for (unsigned int i = 0; i < estoque_moto.size(); i++)
+  {
+    total += estoque_moto[i]->getPreco();
+  }
+
+  for (unsigned int i = 0; i < estoque_caminhao.size(); i++)
+  {
+    total += estoque_caminhao[i]->getPreco();
+  }
+
+  return total;
 }
