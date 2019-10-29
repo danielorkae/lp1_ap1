@@ -37,8 +37,10 @@ int main()
 
   system("clear");
 
+  //Laço para manter o usuário no menu
   while (!sair)
   {
+    //Condicional para menu de todas as concessionarias
     if (concessionariaSelecionada == NULL)
     {
       selecaoMenuPrincipal = menuPrincipal();
@@ -58,6 +60,7 @@ int main()
         return 0;
       }
     }
+    //condicional para menu de uma concessionaria especifica
     else
     {
       selecaoMenuConcessionaria = menuDaConcessionaria();
@@ -93,7 +96,8 @@ int main()
 
 void criarConcessionaria()
 {
-  string nome, cnpj, tipo_propriedade, nome_propriedade, entrada;
+  //Propriedades que serão passadas para o novo objeto
+  string nome, cnpj, tipo_propriedade, nome_propriedade;
   int escolha = 0;
 
   cout << endl
@@ -141,7 +145,7 @@ void criarConcessionaria()
       cout << "Valor informado inválido!";
     }
 
-
+    //Adicionando o novo objetvo no vetor de concessionarias
     concessionarias.push_back(new Concessionaria(nome, cnpj, tipo_propriedade, nome_propriedade));
 
     cout << endl
@@ -170,12 +174,15 @@ void listarConcessionarias()
 
     Concessionaria *concessionaria = concessionarias[i];
 
+    //Informações básicas da concessionaria
     cout << "Nome: " << concessionaria->getNome() << endl
           << "Proprietário do tipo " << concessionaria->getTipo_propriedade()
           << concessionaria->getNome_propriedade() << endl;
 
+    //Informações dos veículos da concessionaria
     concessionaria->listarEstoque();
 
+    //Informação do valor total dos veículos da concessionaria
     cout << endl << "Valor total dos veículos: R$" << concessionaria->valorTotal() << endl;
   } 
 
@@ -191,6 +198,7 @@ Concessionaria *escolherConcessionaria()
   cout << endl
        << "=== ESCOLHER CONCESSIONÁRIA ===" << endl;
 
+  //listagem de todas as concessionarias criadas
   for (unsigned int i = 0; i < concessionarias.size(); i++)
   {
     cout << i + 1 << " - " << concessionarias[i]->getNome() << endl;
@@ -213,6 +221,7 @@ Concessionaria *escolherConcessionaria()
     return NULL;
   }
 
+  //Selecionando a concessionaria escolhida de acordo com o valor passado pelo usuario
   if (selecao < 0 || selecao > concessionarias.size())
   {
     return escolherConcessionaria();
@@ -229,8 +238,10 @@ Concessionaria *encontrarConcessionaria(string cnpj, bool imprimir)
   {
     Concessionaria *concessionaria = concessionarias[i];
 
+    //Comparando as concessionarias pelo CNPJ cadastrado
     if (concessionaria->getCnpj() == cnpj)
     {
+      //Utilizando uma sobrecarga de operador para imprimir o objeto concessionaria
       if (imprimir)
       {
         cout << concessionaria;

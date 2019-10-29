@@ -19,14 +19,16 @@ private:
   /**
    * Properties
    * Atributos especificos das concessionarias, tanto de informações básicas como de sua lista de estoque. 
-   * Um vetor de chassis também esta sendo utilizado como auxiliar para facilitar na localização dos veiculos.
+   * Foram criados 3 vetores de veículos ao invés de um para tornar mais fácil a manipulação do vector
    */
 
+  //Informações
   string nome;
   string cnpj;
   string tipo_propriedade;
   string nome_propriedade;
 
+  //Vetores de veículos separados por tipos
   vector<Automovel *> estoque_automovel;
   vector<Moto *> estoque_moto;
   vector<Caminhao *> estoque_caminhao;
@@ -35,6 +37,7 @@ public:
 
   /**
    * Constructors and Destructors
+   * Contrutor padrão, por parâmetro e destrutor da classe
    */
 
   Concessionaria();
@@ -43,6 +46,7 @@ public:
 
   /**
    * Getters
+   * Funções para acessar os valores dos atributos da classe
    */
 
   string getNome();
@@ -56,6 +60,7 @@ public:
 
   /**
    * Setters
+   * Funções para determinar os valores dos atributos da classe
    */
 
   void setNome(string _nome);
@@ -67,15 +72,15 @@ public:
    * Methods
    */
 
-  void listarEstoque();
-  void adicionarVeiculoAoEstoque();
-  void aumentarValorDoEstoque();
-  void listarCarros90();
-  Veiculo *encontrarVeiculoNoEstoque(string chassi, bool imprimir);
-  int calculaData(int day, int month, int year);
+  void listarEstoque(); //Lista todos os veículos contidos no estoque da concessionaria
+  void adicionarVeiculoAoEstoque(); //Adiciona um veículo específico ao estoque, diferenciado pelo tipo
+  void aumentarValorDoEstoque(); //Realiza um aumento no valor de todos os veículos contidos no estoque da concessionaria selecionada
+  void listarCarros90(); //Lista todos os carros que tem menos que 90 dias de uso
+  Veiculo *encontrarVeiculoNoEstoque(string chassi, bool imprimir); //Verifica se um determinado veículo existe no estoque, fazendo as comparações pelo número de chassi
+  int calculaData(int day, int month, int year); //Função para transformar o dia, mes e ano em um único número inteiro, facilitando o calculo de dias de vida do veículo
 
-  void pesquisaChassi();
-  int valorTotal();
+  void pesquisaChassi(); //Pesquisa no estoque da concessionaria de existe algum veículo com o número de chassi informado
+  int valorTotal(); //Realiza o cálculo do valor total do estoque da concessionaria
 
 };
 

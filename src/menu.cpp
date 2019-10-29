@@ -8,6 +8,7 @@ int menuPrincipal()
 {
   int selecao;
 
+  //Opções do menu principal, com as opções para manipular as concesisonarias
   cout
       << endl
       << "=== MENU PRINCIPAL ===" << endl
@@ -19,11 +20,13 @@ int menuPrincipal()
   cout << "#: ";
   cin >> selecao;
 
+  //Condicional para checkar se o valor informado não está fora das opções
   if (selecao < 0 || selecao > 3)
   {
     return menuPrincipal();
   }
 
+  //Retorno do menu selecionado
   return selecao;
 }
 
@@ -31,6 +34,7 @@ int menuDaConcessionaria()
 {
   int selecao;
 
+  //Opções do menu interno das concessionarias, com as opções para manipular os atributos da concessionaria em si
   cout
       << endl
       << "=== MENU DA CONCESSIONÁRIA ===" << endl
@@ -44,10 +48,12 @@ int menuDaConcessionaria()
   cout << "#: ";
   cin >> selecao;
 
+  //Condicional para checkar se o valor informado não está fora das opções
   if (selecao < 0 || selecao > 5)
   {
     return menuDaConcessionaria();
   }
 
+  //Retorno do menu selecionado
   return selecao;
 }

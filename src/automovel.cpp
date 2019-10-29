@@ -6,10 +6,13 @@ using namespace std;
  * Constructors and Destructors
  */
 
+//Construtor Padrão
 Automovel::Automovel() {}
 
+//Destrutor Padrão
 Automovel::~Automovel() {}
 
+//Construtor com parâmetro, utilizando as propriedades do veículo
 Automovel::Automovel(string marca, string chassi, float preco, int _dia, int _mes, int _ano, string motor)
 {
   setMarca(marca);

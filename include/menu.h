@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int menuPrincipal();
-int menuDaConcessionaria();
+int menuPrincipal(); //Função para interação do usuário com o Menu de Concessionarias
+int menuDaConcessionaria(); //Função para interação do usuário com uma Concessionaria espeficica
 
 #endif

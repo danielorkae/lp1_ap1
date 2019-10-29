@@ -3,7 +3,7 @@
 using namespace std;
 
 /**
- * Constructors and Destructors
+ * Constructors and Destructors Padrão
  */
 
 Veiculo::Veiculo() {}
@@ -94,6 +94,7 @@ void Veiculo::addPercentage(float value)
 
 ostream &operator<<(ostream &stream, const Veiculo &veiculo)
 {
+  //Utilizando a stream para fazer a impressao dos atributos do veículo
   stream
       << "=== IMPRIMIR VEÍCULO ===" << endl
       << veiculo.marca << endl
